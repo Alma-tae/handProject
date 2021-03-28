@@ -1,0 +1,31 @@
+@charset "UTF-8";
+.slide{
+  width: 700px;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.slide1 .slide-inner{
+  width: 2100px;
+  height: 400px;
+}
+.slide2 .slide-inner{
+  width: 700px;
+}
+.slide3 .slide-inner{
+  width: 700px;
+  position: relative;
+  height: 400px;
+}
+.slide-img{
+  width: 700px;
+  height: 400px;
+  float: left;
+}
+.slide3 .slide-img{
+  width: 700px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
