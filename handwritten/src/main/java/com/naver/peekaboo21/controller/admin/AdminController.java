@@ -19,7 +19,7 @@ public class AdminController {
 	
 	@RequestMapping("login.do")
 	public String login() {
-		return "admin/login";
+		return "admin/login.page";
 	}
 	
 	@RequestMapping("login_check.do")
@@ -30,10 +30,10 @@ public class AdminController {
 			session.setAttribute("admin_name", name);
 			session.setAttribute("email", dto.getEmail());
 			session.setAttribute("name", name);
-			mav.setViewName("admin/admin");
+			mav.setViewName("admin/admin.page");
 			mav.addObject("message", "success");
 		}else {
-			mav.setViewName("admin/login");
+			mav.setViewName("admin/login.page");
 			mav.addObject("message", "error");
 		}
 		return mav;
@@ -47,6 +47,6 @@ public class AdminController {
 	
 	@RequestMapping("page.do")
 	public String page() {
-		return "admin/admin";
+		return "admin/admin.page";
 	}
 }

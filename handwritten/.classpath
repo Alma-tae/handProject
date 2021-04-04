@@ -26,6 +26,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/taehu/Downloads/apache-tomcat-9.0.41.zip"/>
+	<classpathentry kind="lib" path="C:/tomcat9/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

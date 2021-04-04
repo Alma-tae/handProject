@@ -37,7 +37,7 @@ $(function(){
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password"><br>
+      <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
       <small id="emailHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
     </div>
     <button type="button" class="btn btn-primary" id="btnLogin">Login</button><br>
