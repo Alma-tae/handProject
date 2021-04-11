@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	<!-- 첨부파일의 이름 -->
+	<select id="getAttach" resultType="String">
+		select fullname from attach
+		where nno=#{nno} order by regdate
+	</select>
+	<!-- 첨부파일 레코드 삭제 -->
+	<delete id="deleteAttach">
+		delete from attach where fullName=#{fullName}
+	</delete>
+	<!-- 글 저장 -->
+	<insert id="insert">
+		insert into notice (nno,title,content,writer,show)
+		values (seq_notice.nextval, #{title}, #{content}, #{writer}, 'Y')
+	</insert>
+	<!-- 첨부파일 추가(글 저장 전) -->
+	<insert id="addAttach">
+		insert into attach (fullName, nno) values
+		(#{fullName}, seq_notice.currval)
+	</insert>
+	<!-- 첨부파일 추가(글 수정) -->
+	<insert id="updateAttach">
+		insert into attach (fullName, nno) values
+		(#{fullName}, #{nno})
+	</insert>
+	<!-- 게시물 내용 -->
+	<select id="view"
+		resultType="com.naver.peekaboo21.model.notice.dto.NoticeDTO">
+		select n.nno, n.title, n.content, n.regdate, n.viewcnt, a.name as name, n.show, t.fullName as img
+		from admin a
+		inner join notice n
+		on n.writer=a.email
+		inner join attach t
+		on n.nno=t.nno		
+		where n.nno=#{nno}
+	</select>
+	<!-- 조회수 증가 처리 -->
+	<update id="increaseViewcnt">
+		update notice set viewcnt=viewcnt+1 where nno=#{nno}
+	</update>
+	<!-- 게시물 수정 -->
+	<update id="updateArticle">
+		update notice set title=#{title}, content=#{content}
+		where nno=#{nno}
+	</update>
+	<!-- 게시물 숨김 처리 -->
+	<update id="deleteArticle">
+		update notice set show='N' where nno=#{nno}
+	</update>
+
+	<select id="countArticle" resultType="int">
+		select count(*) from notice n, admin a
+		<include refid="search" />
+	</select>
+
+	<select id="listAll"
+		resultType="com.naver.peekaboo21.model.notice.dto.NoticeDTO">
+		<include refid="paging_header" />
+		select rownum, nno, title, content, n.regdate, viewcnt, (select name from admin) name, show
+		from notice n, admin a
+		<include refid="search" />
+		order by nno desc, regdate desc
+		<include refid="paging_footer" />
+	</select>
+	<sql id="paging_header">
+		select * from(select rownum as rn, A.*
+		from (
+	</sql>
+	<sql id="paging_footer">
+		) A
+		) where rn between #{start} and #{end}
+	</sql>
+	<sql id="search">
+		<choose>
+			<when test="search_option == 'all'">
+				 where 
+				 n.writer = a.email and (content like '%'||#{keyword}||'%'
+				or title like '%'||#{keyword}||'%')
+			</when>
+			<otherwise>
+			where n.writer = a.email and
+				${search_option} like
+				'%'||#{keyword}||'%'
+			</otherwise>
+		</choose>
+	</sql>
+</mapper>
