@@ -27,7 +27,7 @@ public class NoticeController {
 	@Inject
 	NoticeService noticeService;
 	
-	@GetMapping(value="view.do")
+	@RequestMapping(value="view.do")
 	public ModelAndView view(@RequestParam int nno, @RequestParam int curPage, 
 			@RequestParam String search_option, @RequestParam String keyword, 
 			HttpSession session) throws Exception{
@@ -35,9 +35,9 @@ public class NoticeController {
 		
 		
 		NoticeDTO dto=noticeService.read(nno);
-		String content=dto.getContent();
+		String content=dto.getContent(); 
 		content=content.replace("&lt;", "<");
-		content=content.replace("&gt;", ">");
+		content=content.replace("&gt;", ">"); 
 		dto.setContent(content);
 		
 		ModelAndView mav = new ModelAndView();

@@ -16,9 +16,6 @@
 		});
 	});
 </script>
-<style>
-.oriImg {width:500px; height:auto;}
-</style>
 </head>
 <body>
 	<h2>Notice detail</h2>

@@ -28,13 +28,9 @@
 	<!-- 게시물 내용 -->
 	<select id="view"
 		resultType="com.naver.peekaboo21.model.notice.dto.NoticeDTO">
-		select n.nno, n.title, n.content, n.regdate, n.viewcnt, a.name as name, n.show, t.fullName as img
-		from admin a
-		inner join notice n
-		on n.writer=a.email
-		inner join attach t
-		on n.nno=t.nno		
-		where n.nno=#{nno}
+		select nno, title, content, n.regdate, viewcnt, a.name as name, show
+		from admin a, notice n
+		where n.writer=a.email and nno=#{nno}
 	</select>
 	<!-- 조회수 증가 처리 -->
 	<update id="increaseViewcnt">
@@ -58,7 +54,7 @@
 	<select id="listAll"
 		resultType="com.naver.peekaboo21.model.notice.dto.NoticeDTO">
 		<include refid="paging_header" />
-		select rownum, nno, title, content, n.regdate, viewcnt, (select name from admin) name, show
+		select rownum, nno, title, content, n.regdate, viewcnt, a.name as name, show
 		from notice n, admin a
 		<include refid="search" />
 		order by nno desc, regdate desc
