@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Notice View</title>
 <%@ include file="/WEB-INF/views/include/factor.jsp"%>
+<script src="/peekaboo21/include/js/common.js"></script>
 <script>
 	$(function() {
 		$("#btnEdit").click(function() {
@@ -15,6 +16,18 @@
 			location.href = "/peekaboo21/notice/list.do";
 		});
 	});
+	listAttach();
+	function listAttach(){
+		$.ajax({
+			type:"post",
+			url:"${path}/notice/getAttach/${dto.nno}",
+			success:function(list){
+				$(list).each(function(){
+					var fileInfo=getTileInfo(this);
+				});
+			}
+		});
+	}
 </script>
 </head>
 <body>
@@ -25,7 +38,6 @@
 			<h1>${dto.title}</h1>
 			<p class="lead">${dto.content}<br>
 			</p>
-			<p><img src="${dto.img}" class="oriImg"/></p>
 			<hr class="my-4">
 			<p>
 				<fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss" />
@@ -33,6 +45,7 @@
 			<p class="text-success">조회수 : ${dto.viewcnt}</p>
 			<p class="lead"></p>
 		</div>
+		<div id="uploadedList"></div>
 		<div>
 			<c:if test="${sessionScope.admin_email != null}">
 				<button type="button" onclick="location.href='/peekaboo21/notice/edit/${dto.nno}';">수정/삭제</button>
