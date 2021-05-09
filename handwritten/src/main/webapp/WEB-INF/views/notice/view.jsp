@@ -15,15 +15,19 @@
 		$("#btnList").click(function() {
 			location.href = "/peekaboo21/notice/list.do";
 		});
+		listAttach();
 	});
-	listAttach();
+	
 	function listAttach(){
 		$.ajax({
 			type:"post",
-			url:"${path}/notice/getAttach/${dto.nno}",
+			url:"/peekaboo21/notice/getAttach/${dto.nno}",
 			success:function(list){
 				$(list).each(function(){
 					var fileInfo=getTileInfo(this);
+					var html = "<div><a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a>&nbsp;&nbsp;";
+					/* html += "<a href='#' class='file_del' data-src='"+this+"'>[삭제]</a></div>"; */
+					$("#uploadedList").append(html);
 				});
 			}
 		});

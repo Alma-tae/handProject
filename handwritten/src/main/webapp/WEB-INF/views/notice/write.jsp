@@ -5,8 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Notice Write</title>
+<%@ include file="/WEB-INF/views/include/factor.jsp"%>
 <script src="/peekaboo21/include/js/common.js"></script>
-<!-- <script src="/peekaboo21/ckeditor/ckeditor.js"></script> -->
+<script src="/peekaboo21/ckeditor/ckeditor.js"></script>
 <script>
 $(function(){
 	$(".fileDrop").on("dragenter dragover", function(e){
@@ -60,11 +61,6 @@ $(function(){
 			document.form1.title.focus();
 			return;
 		}
-		if(content==""){
-			alert("내용을 입력하세요.");
-			document.form1.content.focus();
-			return;
-		}
 		document.form1.submit();
 	});	
 });
@@ -100,10 +96,11 @@ function listAttach(){
 <br>
 <div>
 내용 <textarea id="content" name="content" rows="5" cols="80" placeholder="내용을 입력하세요"></textarea>
-<!-- <script>
+</div>
+<script>
 CKEDITOR.replace("content",{filebrowserUploadUrl:"/peekaboo21/imageUpload.do"});
-</script> -->
-</div><br>
+</script>
+<br>
 <div>
 첨부파일 등록<br>
 <!-- <input type="file" name="fileDrop"> -->
