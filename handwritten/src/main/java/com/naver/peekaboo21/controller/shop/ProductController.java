@@ -40,12 +40,12 @@ public class ProductController {
 
 	@RequestMapping("write.do")
 	public String write() {
-		return "shop/product_write";
+		return "shop/product_write.page";
 	}
 
 	@RequestMapping("edit/{product_id}")
 	public ModelAndView edit(@PathVariable("product_id") int product_id, ModelAndView mav) {
-		mav.setViewName("/shop/product_edit"); // 편집 페이지
+		mav.setViewName("/shop/product_edit.page"); // 편집 페이지
 		mav.addObject("dto", productService.detailProduct(product_id));
 		return mav;
 	}
@@ -95,14 +95,14 @@ public class ProductController {
 
 	@RequestMapping("list.do") // 세부적인 url pattern
 	public ModelAndView list(ModelAndView mav) {
-		mav.setViewName("/shop/product_list"); // 페이지의 이름
+		mav.setViewName("/shop/product_list.page"); // 페이지의 이름
 		mav.addObject("list", productService.listProduct()); // 데이터 저장
 		return mav; // 출력 페이지로 이동
 	}
 
 	@RequestMapping("detail/{product_id}")
 	public ModelAndView detail(@PathVariable int product_id, ModelAndView mav) {
-		mav.setViewName("/shop/product_detail");
+		mav.setViewName("/shop/product_detail.page");
 		mav.addObject("dto", productService.detailProduct(product_id));
 		return mav;
 	}

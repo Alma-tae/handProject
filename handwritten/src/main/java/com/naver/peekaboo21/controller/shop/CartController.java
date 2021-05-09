@@ -25,7 +25,7 @@ public class CartController {
 
 	@RequestMapping("order.do")
 	public String order() {
-		return "shop/order";
+		return "shop/order.page";
 	}
 
 	@RequestMapping("delete.do")
@@ -73,11 +73,11 @@ public class CartController {
 			map.put("sum", sumMoney + fee);
 			map.put("list", list);
 			map.put("count", list.size());
-			mav.setViewName("shop/cart_list");
+			mav.setViewName("shop/cart_list.page");
 			mav.addObject("map", map);
 			return mav;
 		} else {
-			return new ModelAndView("member/login", "", null);
+			return new ModelAndView("member/login.page", "", null);
 		}
 	}
 
