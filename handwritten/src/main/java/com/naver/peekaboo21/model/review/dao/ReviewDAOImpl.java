@@ -29,7 +29,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public void update(ReviewDTO dto) throws Exception {
-		sqlSession.update("review.updateArticle", dto);	
+		sqlSession.update("review.updateArticle", dto);
 	}
 
 	@Override
@@ -39,10 +39,10 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public List<ReviewDTO> listAll(int start, int end, String search_option, String keyword) throws Exception {
-		Map<String,Object> map = new HashMap<String,Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search_option", search_option);
 		map.put("keyword", keyword);
-		map.put("start",  start);
+		map.put("start", start);
 		map.put("end", end);
 		return sqlSession.selectList("review.listAll", map);
 	}
@@ -58,6 +58,29 @@ public class ReviewDAOImpl implements ReviewDAO {
 		map.put("search_option", search_option);
 		map.put("keyword", keyword);
 		return sqlSession.selectOne("review.countArticle", map);
+	}
+
+	@Override
+	public void deleteImages(String image_url) {
+		sqlSession.delete("review.deleteImages", image_url);
+	}
+
+	@Override
+	public List<String> getImages(int rno) {
+		return sqlSession.selectList("review.getImages", rno);
+	}
+
+	@Override
+	public void addImages(String image_url) {
+		sqlSession.insert("review.addImages", image_url);
+	}
+
+	@Override
+	public void updateImages(String image_url, int rno) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("image_url", image_url);
+		map.put("rno", rno);
+		sqlSession.insert("review.updateImages", map);
 	}
 
 }

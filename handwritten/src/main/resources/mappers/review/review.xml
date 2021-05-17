@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
+	<!-- 게시판 이미지 -->
+	<select id="getImages" resultType="String">
+		select image_url from images
+		where rno=#{rno}
+	</select>
+	<delete id="deleteImages">
+		delete from images where image_url=#{image_url}
+	</delete>
+	<insert id="addImages">
+		insert into images (image_url, rno) values
+		(#{image_url}, seq_review.currval)
+	</insert>
+	<insert id="updateImages">
+		insert into images (image_url, rno) values
+		(#{image_url}, #{rno})
+	</insert>
 
 	<!-- 글 저장 -->
 	<insert id="insert">
@@ -10,9 +26,11 @@
 	<!-- 게시물 내용 -->
 	<select id="view"
 		resultType="com.naver.peekaboo21.model.review.dto.ReviewDTO">
-		select rno, title, content, r.regdate, viewcnt, name, writer, show
+		select rno, title, content, r.regdate, viewcnt, name,
+		writer, show
 		from review r, member m
-		where r.writer=m.email and rno=#{rno}
+		where r.writer=m.email and
+		rno=#{rno}
 	</select>
 	<!-- 조회수 증가 처리 -->
 	<update id="increaseViewcnt">
@@ -36,13 +54,15 @@
 	<select id="listAll"
 		resultType="com.naver.peekaboo21.model.review.dto.ReviewDTO">
 		<include refid="paging_header" />
-		select rownum, rno, title, content, r.regdate, viewcnt, name, show, (select count(*) from comments where rno=r.rno) cnt
-		from review r, member m
+		select rownum, rno, title, content, r.regdate, viewcnt, name, show,
+		(select count(*) from comments where rno=r.rno) cnt
+		from review r,
+		member m
 		<include refid="search" />
 		order by rno desc, regdate desc
 		<include refid="paging_footer" />
 	</select>
-	
+
 	<sql id="paging_header">
 		select * from(select rownum as rn, A.*
 		from (
@@ -54,16 +74,16 @@
 	<sql id="search">
 		<choose>
 			<when test="search_option == 'all'">
-				 where r.writer=m.email and (name like '%'||#{keyword}||'%' 
-				 or content like '%'||#{keyword}||'%' 
-				 or title like '%'||#{keyword}||'%')
+				where r.writer=m.email and (name like '%'||#{keyword}||'%'
+				or content like '%'||#{keyword}||'%'
+				or title like '%'||#{keyword}||'%')
 			</when>
 			<otherwise>
-			where r.writer=m.email and
+				where r.writer=m.email and
 				${search_option} like
 				'%'||#{keyword}||'%'
 			</otherwise>
 		</choose>
 	</sql>
-	
+
 </mapper>

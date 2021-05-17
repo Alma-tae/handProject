@@ -23,6 +23,6 @@ public class ReviewDTO {
 	private String show;
 	//private String[] files;
 	private String writer;
-	private String picture_url;
+	private String image_url;
 	private MultipartFile file1, file2;
 }

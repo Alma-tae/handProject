@@ -36,8 +36,8 @@ public class ReviewServiceImpl implements ReviewService {
 		dto.setTitle(title);
 		dto.setWriter(writer);
 		reviewDao.create(dto); //레코드 저장
-		String[] files=dto.getFiles(); //첨부파일 리스트
-		if(files==null) return; //첨부파일이 없으면 종료
+		//String[] files=dto.getFiles(); //첨부파일 리스트
+		//if(files==null) return; //첨부파일이 없으면 종료
 	}
 
 	@Override
@@ -49,8 +49,8 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void update(ReviewDTO dto) throws Exception {
 		reviewDao.update(dto);
-		String[] files=dto.getFiles();
-		if(files==null) return;
+		//String[] files=dto.getFiles();
+		//if(files==null) return;
 	}
 
 	@Override

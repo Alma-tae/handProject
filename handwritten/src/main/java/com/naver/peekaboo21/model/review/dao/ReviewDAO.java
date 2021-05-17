@@ -5,6 +5,10 @@ import java.util.List;
 import com.naver.peekaboo21.model.review.dto.ReviewDTO;
 
 public interface ReviewDAO {
+	public void deleteImages(String image_url);
+	public List<String> getImages(int rno);
+	public void addImages(String image_url);
+	public void updateImages(String image_url, int rno);
 	public void create(ReviewDTO dto) throws Exception;
 	public ReviewDTO read(int rno) throws Exception;
 	public void update(ReviewDTO dto) throws Exception;
