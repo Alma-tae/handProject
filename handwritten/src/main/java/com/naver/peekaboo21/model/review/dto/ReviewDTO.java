@@ -21,8 +21,8 @@ public class ReviewDTO {
 	private String name;
 	private int cnt;
 	private String show;
-	//private String[] files;
+	private String[] files;
 	private String writer;
 	private String image_url;
-	private MultipartFile file1, file2;
+	private MultipartFile file;
 }

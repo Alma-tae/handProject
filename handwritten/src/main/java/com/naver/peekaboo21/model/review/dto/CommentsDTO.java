@@ -12,8 +12,8 @@ import lombok.ToString;
 public class CommentsDTO {
 	private int cno;
 	private int rno;
-	private String replytext;
-	private String replyer;
+	private String commenttext;
+	private String commenter;
 	private String name;
 	private Date regdate;
 	private Date updatedate;

@@ -19,7 +19,7 @@ public class CommentsServiceImpl implements CommentsService {
 	@Override
 	public List<CommentsDTO> list(Integer rno, int start, int end, HttpSession session) {
 		List<CommentsDTO> items = commentsDao.list(rno, start, end);
-		/* String email = (String) session.getAttribute("email"); */
+		//String email = (String) session.getAttribute("email");
 		return items;
 	}
 

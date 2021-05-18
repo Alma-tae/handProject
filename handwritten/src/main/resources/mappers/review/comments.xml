@@ -3,7 +3,7 @@
 <mapper namespace="comments">
 
 	<update id="update">
-		update comments set replytext=#{replytext} where cno=#{cno}
+		update comments set commenttext=#{commenttext} where cno=#{cno}
 	</update>
 	
 	<delete id="delete">
@@ -19,16 +19,16 @@
 	</select>
 	
 	<insert id="insertComments">
-		insert into comments (cno, rno, replytext, replyer) values
-		(comments_seq.nextval, #{rno}, #{replytext}, #{replyer})
+		insert into comments (cno, rno, commenttext, commenter) values
+		(comments_seq.nextval, #{rno}, #{commenttext}, #{commenter})
 	</insert>
 
 	<select id="listComments" resultType="com.naver.peekaboo21.model.review.dto.CommentsDTO">
 		<include refid="paging_header" />
-		select cno, rno, replytext, replyer, name, c.regdate, c.updatedate, 
-		(select writer from review_h where rno=c.rno) writer
+		select cno, rno, commenttext, commenter, name, c.regdate, c.updatedate, 
+		(select writer from review where rno=c.rno) writer
 		from comments c, admin a
-		where c.replyer = a.email and rno = #{rno}
+		where c.commenter = a.email and rno = #{rno}
 		order by cno desc
 		<include refid="paging_footer" />
 	</select>

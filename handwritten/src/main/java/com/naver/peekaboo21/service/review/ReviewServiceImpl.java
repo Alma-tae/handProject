@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.naver.peekaboo21.model.review.dao.ReviewDAO;
 import com.naver.peekaboo21.model.review.dto.ReviewDTO;
@@ -35,9 +36,13 @@ public class ReviewServiceImpl implements ReviewService {
 		dto.setContent(content);
 		dto.setTitle(title);
 		dto.setWriter(writer);
-		reviewDao.create(dto); //레코드 저장
-		//String[] files=dto.getFiles(); //첨부파일 리스트
-		//if(files==null) return; //첨부파일이 없으면 종료
+		reviewDao.create(dto); 
+		
+		String[] files = dto.getFiles();
+		if(files == null) return; //첨부파일이 없으면 종료
+		for(String name : files) {
+			reviewDao.addImages(name);
+		}
 	}
 
 	@Override
@@ -49,8 +54,12 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void update(ReviewDTO dto) throws Exception {
 		reviewDao.update(dto);
-		//String[] files=dto.getFiles();
-		//if(files==null) return;
+		
+		String[] files = dto.getFiles();
+		if(files == null) return; //첨부파일이 없으면 종료
+		for(String name : files) {
+			reviewDao.updateImages(name, dto.getRno());
+		}
 	}
 
 	@Override
@@ -79,6 +88,16 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int countArticle(String search_option, String keyword) throws Exception {
 		return reviewDao.countArticle(search_option, keyword);
+	}
+
+	@Override
+	public void deleteImages(String image_url) {
+		reviewDao.deleteImages(image_url);
+	}
+
+	@Override
+	public List<String> getImages(int rno) {
+		return reviewDao.getImages(rno);
 	}
 
 }
