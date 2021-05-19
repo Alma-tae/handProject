@@ -29,7 +29,7 @@ table td {
 <body>
 	<h2>Products</h2>
 	<c:if test="${sessionScope.admin_email != null}">
-		<button type="button" id="btnAdd">상품등록</button>
+		<button type="button" id="btnAdd" class="btn btn-secondary disabled">상품등록</button>
 	</c:if>
 	<c:set var="i" value="0"/>
 	<c:set var="j" value="4"/>

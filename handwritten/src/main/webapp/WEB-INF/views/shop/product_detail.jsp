@@ -14,8 +14,9 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 }
+
 table td {
-  background: transparent;
+	background: transparent;
 }
 </style>
 </head>
@@ -28,57 +29,33 @@ table td {
 					<div class="card-body">
 						<h6 class="card-subtitle text-muted">예시 이미지입니다.</h6>
 					</div>
-					<img src="/peekaboo21/images/${dto.picture_url}" width="100%" height="300px">
+					<img src="/peekaboo21/images/${dto.picture_url}" width="100%"
+						height="300px">
 				</div>
 			</td>
-			
 
 			<td align="center">
-			<div class="card mb-3">
- 
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-  
-</div>
-
-			
-				<table border="0">
-					<tr>
-						<td class="table-warning">상품명</td>
-						<td>${dto.product_name}</td>
-					</tr>
-					<tr>
-						<td>가격</td>
-						<td>${dto.price}</td>
-					</tr>
-					<tr>
-						<td>설명</td>
-						<td>${dto.description}</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<form name="form1" method="post" action="/peekaboo21/shop/cart/insert.do">
-								<input type="hidden" name="product_id" value="${dto.product_id}">
-								<select name="amount">
-									<c:forEach begin="1" end="10" var="i">
-										<option value="${i}">${i}</option>
-									</c:forEach>
-								</select>&nbsp;개 &ensp; <input type="submit" class="btn btn-danger" value="장바구니에 담기">
-							</form>
-						</td>
-					</tr>
-				</table>
+				<div class="card mb-3">
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">상품명 : ${dto.product_name}</li>
+						<li class="list-group-item">가격 : ${dto.price}</li>
+						<li class="list-group-item">설명 : ${dto.description}</li>
+					</ul>
+					<div class="card-body">
+						<form name="form1" method="post" action="/peekaboo21/shop/cart/insert.do">
+							<input type="hidden" name="product_id" value="${dto.product_id}">
+							<select name="amount">
+								<c:forEach begin="1" end="10" var="i">
+									<option value="${i}">${i}</option>
+								</c:forEach>
+							</select>&nbsp;개 &ensp; <input type="submit" class="btn btn-outline-info" value="장바구니에 담기">
+						</form>
+					</div>
+				</div>
 			</td>
 		</tr>
 	</table>
-	<input type="button" value="목록" class="btn btn-success"
+	<input type="button" value="상품목록" class="btn btn-success"
 		onclick="location.href='/peekaboo21/shop/product/list.do';">
 </body>
 </html>

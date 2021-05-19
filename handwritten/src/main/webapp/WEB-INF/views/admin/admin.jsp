@@ -6,6 +6,12 @@
 <meta charset="UTF-8">
 <title>Admin page</title>
 <%@ include file="/WEB-INF/views/include/factor.jsp"%>
+<style>
+div {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
 </head>
 <body>
 <h2>A.page</h2>

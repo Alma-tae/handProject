@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Member Page</title>
+<style>
+div {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
 </head>
 <body>
 <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
