@@ -65,7 +65,7 @@ $(function(){
 </c:choose>
 	<div>
 	<br><br>
-	<button type="button" id="btnList" class="btn btn-warning disabled">상품목록</button>
+	<button type="button" id="btnList" class="btn btn-success">상품목록</button>
 	</div>
 </body>
 </html>

@@ -15,9 +15,11 @@
 </script>
 <style>
 table {
-  border-spacing: 15px;
+  border-spacing: 30px;
   border-collapse: separate;
   background: transparent;
+  margin-left: auto;
+  margin-right: auto;
 }
 table td {
   background: transparent;
@@ -57,7 +59,7 @@ table td {
 		</div>
 		</td>
 		<c:if test="${i%j == j-1}">
-		</tr>
+	</tr>
 		</c:if>
 		<c:set var="i" value="${i+1}"/>
 	</c:forEach>

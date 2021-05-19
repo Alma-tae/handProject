@@ -27,17 +27,12 @@
 <link rel="stylesheet" href="/peekaboo21/include/slide.css" />
 </head>
 <body>
-	<c:choose>
-		<c:when test="${sessionScope.email == null}">
+	
 			<P style="font-size: 150%;">
 				안녕하세요 :)<br>손편지 프로젝트입니다.
 			</P>
 			<%-- <P>  The time on the server is ${serverTime}. </P> --%>
-		</c:when>
-		<c:otherwise>
-			<h3>${sessionScope.name}님, 어서오세요.</h3>
-		</c:otherwise>
-	</c:choose>
+
 	<div class="slide3 slide">
 		<div class="slide-inner">
 			<img src="/peekaboo21/images/one.jpg" class="slide-img"> <img
