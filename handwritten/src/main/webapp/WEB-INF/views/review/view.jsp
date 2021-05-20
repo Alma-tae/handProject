@@ -91,6 +91,12 @@ function showModify(cno){
 	});
 }
 </script>
+<style>
+div {
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
 </head>
 <body>
 <h2>Review detail</h2>
@@ -110,9 +116,10 @@ function showModify(cno){
 <c:if test="${sessionScope.email == dto.writer}">
 	<button type="button" onclick="location.href='/peekaboo21/review/edit/${dto.rno}';">수정/삭제</button>
 </c:if>
-	<button type="button" id="btnList">목록</button>
+	<button type="button" id="btnList" class="btn btn-success">목록</button>
 </div>
 </form>
+<br>
 <div style="width:700px; text-aligh:center;">
 <c:if test="${sessionScope.admin_email != null}">
 <textarea rows="5" cols="80" name="commenttext" id="commenttext" placeholder="댓글을 작성하세요"></textarea><br>

@@ -88,7 +88,7 @@
 <body>
 	<h2>Notice detail</h2>
 	<br>
-	<form id="form1" name="form1" method="post" enctype="multipart/form-data">
+	<form id="form1" name="form1" method="post">
 
 		<div class="jumbotron">
 			<h1>${dto.title}</h1>

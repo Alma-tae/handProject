@@ -3,19 +3,19 @@
 <mapper namespace="review">
 	<!-- 게시판 이미지 -->
 	<select id="getImages" resultType="String">
-		select image_url from images
-		where rno=#{rno}
+		select fullName from images
+		where rno=#{rno} order by regdate
 	</select>
 	<delete id="deleteImages">
-		delete from images where image_url=#{image_url}
+		delete from images where fullName=#{fullName}
 	</delete>
 	<insert id="addImages">
-		insert into images (image_url, rno) values
-		(#{image_url}, seq_review.currval)
+		insert into images (fullName, rno) values
+		(#{fullName}, seq_review.currval)
 	</insert>
 	<insert id="updateImages">
-		insert into images (image_url, rno) values
-		(#{image_url}, #{rno})
+		insert into images (fullName, rno) values
+		(#{fullName}, #{rno})
 	</insert>
 
 	<!-- 글 저장 -->

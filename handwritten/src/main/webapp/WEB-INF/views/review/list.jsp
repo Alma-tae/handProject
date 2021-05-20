@@ -29,9 +29,9 @@
 	<option value="title" <c:out value="${map.search_option =='title'?'selected':''}"/>>제목</option>
 	</select>
 	<input name="keyword" value="${map.keyword}">
-	<input type="submit" value="조회">
+	<input type="submit" class="btn btn-danger disabled" value="조회"> &ensp;
 	<c:if test="${sessionScope.email != null}">
-		<button type="button" id="btnWrite">글쓰기</button>
+		<button type="button" id="btnWrite" class="btn btn-outline-secondary">글쓰기</button>
 	</c:if>
 	</form>
 	${map.count}개의 게시물이 있습니다.
@@ -40,7 +40,7 @@
 			<th>번호</th>
 			<th>제목</th>
 			<th>이름</th>
-			<th>날짜</th>
+			<th>내용</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach var="row" items="${map.list}">
@@ -53,7 +53,7 @@
 				<span style="color:red">( ${row.cnt} )</span>
 				</c:if></td>
 				<td>${row.name}</td>
-				<td><fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td>${row.content}</td>
 				<td>${row.viewcnt}</td>
 			</tr>
 			</c:when>

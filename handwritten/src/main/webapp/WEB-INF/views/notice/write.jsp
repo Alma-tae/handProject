@@ -35,9 +35,9 @@ $(function(){
 			}
 		});
 	});
-
+	//첨부파일 목록
 	listAttach();
-	
+	//첨부파일 삭제
 	$("#uploadedList").on("click", "file_del", function(e){
 		var that=$(this);
 		$.ajax({
@@ -67,7 +67,7 @@ $(function(){
 function listAttach(){
 	$.ajax({
 		type:"post",
-		url:"${path}/notice/getAttach/${dto.nno}",
+		url:"/peekaboo21/notice/getAttach/${dto.nno}",
 		success:function(list){
 			$(list).each(function(){
 				var fileInfo = getFileInfo(this);
