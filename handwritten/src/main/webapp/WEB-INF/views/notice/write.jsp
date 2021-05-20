@@ -92,7 +92,7 @@ function listAttach(){
 <body>
 <h2>Notice write</h2><br>
 <form id="form1" name="form1" method="post" action="/peekaboo21/notice/insert.do" enctype="multipart/form-data">
-<div>제목<input name="title" id="title" size="80" placeholder="제목을 입력하세요."></div>
+<div>제목 &ensp; <input name="title" id="title" size="80" placeholder="제목을 입력하세요."></div>
 <br>
 <div>
 내용 <textarea id="content" name="content" rows="5" cols="80" placeholder="내용을 입력하세요"></textarea>
@@ -108,7 +108,7 @@ CKEDITOR.replace("content",{filebrowserUploadUrl:"/peekaboo21/imageUpload.do"});
 <div id="uploadedList"></div>
 </div><br>
 <div>
-	<button type="button" id="btnSave">확인</button>
+	<button type="button" id="btnSave" class="btn btn-warning">확인</button>
 </div>
 </form>
 </body>

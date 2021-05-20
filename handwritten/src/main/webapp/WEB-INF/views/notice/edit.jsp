@@ -99,22 +99,27 @@ function listAttach(){
 </head>
 <body>
 <h2>Notice edit</h2>
-<form id="form1" name="form1" method="post">
+<form id="form1" name="form1" method="post" enctype="multipart/form-data">
 <div>작성일자 : <fmt:formatDate value="${dto.regdate}" pattern="yyyy-MM-dd a HH:mm:ss"/></div>
 <div>조회수 : ${dto.viewcnt}</div>
 <div>이름 : ${dto.name}</div>
 <div>제목 : <input name="title" value="${dto.title}"></div>
 <div>
-내용 : <textarea rows="3" cols="80" name="content" id="content">${dto.content}</textarea>
+내용 <textarea rows="3" cols="80" name="content" id="content">${dto.content}</textarea>
 </div>
 <script>
 CKEDITOR.replace("content",{filebrowserUploadUrl : "/peekaboo21/imageUpload.do", height:"800px"});
 </script><br>
 <div>
+첨부파일 등록<br>
+<div class="fileDrop"></div>
+<div id="uploadedList"></div>
+</div><br>
+<div>
 <input type="hidden" name="nno" value="${dto.nno}">
-	<button type="button" id="btnUpdate">수정</button>
-	<button type="button" id="btnDelete">삭제</button>
-	<button type="button" id="btnList">목록</button>
+	<button type="button" id="btnUpdate" class="btn btn-warning">수정</button>
+	<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
+	<button type="button" id="btnList" class="btn btn-success">목록</button>
 </div>
 </form>
 </body>

@@ -31,9 +31,9 @@
 				<c:out value="${map.search_option =='title'?'selected':''}"/>>제목</option>
 		</select> 
 		<input name="keyword" value="${map.keyword}">
-		<input type="submit" value="조회">
+		<input type="submit" class="btn btn-info disabled" value="조회">
 		<c:if test="${sessionScope.admin_email != null}">
-			<button type="button" id="btnWrite">글쓰기</button>
+			<button type="button" id="btnWrite" class="btn btn-secondary disabled">글쓰기</button>
 		</c:if>
 	</form>
 	${map.count}개의 게시물이 있습니다.

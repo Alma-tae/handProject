@@ -44,7 +44,7 @@ public class ReviewController {
 		dto.setContent(content);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("review/view");
+		mav.setViewName("review/view.page");
 		mav.addObject("dto", dto);
 		mav.addObject("curPage", curPage);
 		mav.addObject("search_option", search_option);
@@ -81,7 +81,7 @@ public class ReviewController {
 		int end=pager.getPageEnd(); 
 		List<ReviewDTO> list = reviewService.listAll(start, end, search_option, keyword);
 		ModelAndView mav=new ModelAndView();
-		mav.setViewName("review/list"); 
+		mav.setViewName("review/list.page"); 
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("list", list);
 		map.put("count", count);
@@ -94,7 +94,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="write.do")
 	public String write() {
-		return "review/write";
+		return "review/write.page";
 	}
 	
 	@RequestMapping(value="insert.do")
@@ -107,7 +107,7 @@ public class ReviewController {
 
 	@RequestMapping("edit/{rno}")
 	public ModelAndView edit(@PathVariable int rno, ModelAndView mav) throws Exception {
-		mav.setViewName("review/edit");
+		mav.setViewName("review/edit.page");
 		mav.addObject("dto", reviewService.read(rno));
 		return mav;
 	}
