@@ -40,7 +40,7 @@ $(function(){
 <div>제목 : <input name="title" value="${dto.title}"></div>
 <br>
 <div>
-내용 <textarea rows="5" cols="80" name="content" id="content">${dto.content}</textarea>
+내용 <textarea rows="3" cols="80" name="content" id="content">${dto.content}</textarea>
 </div>
 <script>
 CKEDITOR.replace("content",{filebrowserUploadUrl : "/peekaboo21/imageUpload.do"});
@@ -48,9 +48,9 @@ CKEDITOR.replace("content",{filebrowserUploadUrl : "/peekaboo21/imageUpload.do"}
 <br>
 <div>
 <input type="hidden" name="rno" value="${dto.rno}">
-	<button type="button" id="btnUpdate">수정</button>
-	<button type="button" id="btnDelete">삭제</button>
-	<button type="button" id="btnList">목록</button>
+	<button type="button" id="btnUpdate" class="btn btn-warning">수정</button>
+	<button type="button" id="btnDelete" class="btn btn-danger">삭제</button>
+	<button type="button" id="btnList" class="btn btn-success">목록</button>
 </div>
 </form>
 </body>

@@ -15,7 +15,7 @@
 	<c:set var="str" value="${fn:replace(str,newLineChar,'<br>')}" />
 	<tr>
 		<td>
-		${rw.name}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)<br>
+		${row.name}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)<br>
 		${str} <c:if test="${sessionScope.email == row.commenter}">
 		<input type="button" value="Modify" onclick="showModify('${row.cno}')">
 		</c:if>

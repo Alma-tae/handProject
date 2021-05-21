@@ -16,7 +16,7 @@ $(function(){
 				if(result=="success"){
 					alert("삭제되었습니다.");
 					$("#modifyComment").css("visibility","hidden");
-					listComment2("1");
+					listComment_rest("1");
 				}
 			}
 		});
@@ -32,7 +32,7 @@ $(function(){
 			success:function(result){
 				if(result=="success"){
 					$("#modifyComment").css("visibility","hidden");
-					listComment2("1");
+					listComment_rest("1");
 				}
 			}
 		});
@@ -46,7 +46,7 @@ $(function(){
 <body>
 ${dto.cno}<br>
 <textarea id="detail_commenttext" rows="3" cols="40">${dto.commenttext}</textarea>
-<div style="text-align:center;">
+<div style="text-align:center;"> <!-- sessionScope.admin_email != null -->
 <c:if test="${sessionScope.eamil == dto.commenter}">
 	<button id="btnCommentUpdate" type="button">수정</button>
 	<button id="btnCommentDelete" type="button">삭제</button>

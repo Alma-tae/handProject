@@ -30,9 +30,17 @@
 	</select>
 	<input name="keyword" value="${map.keyword}">
 	<input type="submit" class="btn btn-danger disabled" value="조회"> &ensp;
-	<c:if test="${sessionScope.email != null}">
-		<button type="button" id="btnWrite" class="btn btn-outline-secondary">글쓰기</button>
-	</c:if>
+	<c:choose>
+	<c:when test="${sessionScope.email != null && sessionScope.admin_email == null}">
+	<button type="button" id="btnWrite" class="btn btn-outline-secondary">글쓰기</button>
+	</c:when>
+	<c:when test="${sessionScope.admin_email != null}">
+		<button type="button" id="btnManage" class="btn btn-outline-secondary">글관리</button>
+	</c:when>
+	<c:otherwise>
+	
+	</c:otherwise>
+	</c:choose>
 	</form>
 	${map.count}개의 게시물이 있습니다.
 	<table class="table table-hover" border="1">

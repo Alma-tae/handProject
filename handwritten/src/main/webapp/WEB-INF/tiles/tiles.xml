@@ -29,15 +29,15 @@
     </definition>
     
     <definition name="*.part" extends="baseEmpty">
-        <put-attribute name="body" value="/WEB-INF/views/comment/{1}.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
     </definition>
  
      <definition name="*/*.part" extends="baseEmpty">
-         <put-attribute name="body" value="/WEB-INF/views/comment/{1}/{2}.jsp" />
+         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
      </definition>
     
     <definition name="*/*/*.part" extends="baseEmpty">
-        <put-attribute name="body" value="/WEB-INF/views/comment/{1}/{2}/{3}.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
     </definition>        
     
 </tiles-definitions>

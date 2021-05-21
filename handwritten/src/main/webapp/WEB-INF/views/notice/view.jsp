@@ -15,32 +15,6 @@
 		$("#btnList").click(function() {
 			location.href = "/peekaboo21/notice/list.do";
 		});
-		$(".fileDrop").on("dragenter dragover", function(e){
-			e.preventDefault(); //기본 효과를 막음
-		});
-		$(".fileDrop").on("drop", function(e){
-			e.preventDefault();
-			var files=e.originalEvent.dataTransfer.files; //첨부파일 배열
-			var file=files[0]; //첫번째 파일
-			var formData=new FormData(); //폼 데이터
-			formData.append("file", file); //폼 데이터에 첨부파일 추가
-			$.ajax({
-				url:"/peekaboo21/upload/uploadAjax",
-				data:formData,
-				dataType:"text",
-				processData:false,
-				contentType:false,
-				type:"post",
-				success:function(data){
-					console.log(data);
-					var fileInfo=getFileInfo(data);
-					var html="<a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a><br>";
-					html+="<input type='hidden' name='files' value='"+fileInfo.fullName+"'>";
-					$("#uploadedList").append(html);
-				}
-			});
-		});
-
 		
 		listAttach();
 		
@@ -66,24 +40,15 @@
 			url:"/peekaboo21/notice/getAttach/${dto.nno}",
 			success:function(list){
 				$(list).each(function(){
-					var fileInfo=getTileInfo(this);
+					var fileInfo=getFileInfo(this);
 					var html = "<div><a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a>&nbsp;&nbsp;";
-					html += "<a href='#' class='file_del' data-src='"+this+"'>[삭제]</a></div>";
+					/* html += "<a href='#' class='file_del' data-src='"+this+"'>[삭제]</a></div>"; */
 					$("#uploadedList").append(html);
 				});
 			}
 		});
 	}
 </script>
-<style>
-.fileDrop{
-	width : 600px;
-	height : 100px;
-	border : 1px dotted gray;
-	background-color : gray;
-	margin : auto;
-}
-</style>
 </head>
 <body>
 	<h2>Notice detail</h2>
@@ -103,7 +68,6 @@
 		</div>
 		<div>
 		첨부파일<br>
-		<div class="fileDrop"></div>
 		<div id="uploadedList"></div>
 		</div><br>
 		<div>

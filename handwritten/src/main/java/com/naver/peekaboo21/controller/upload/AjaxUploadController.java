@@ -92,7 +92,7 @@ public class AjaxUploadController {
 		//파일 삭제
 		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
 		//레코드 삭제
-		noticeService.deleteFile(fileName);
+		/* noticeService.deleteFile(fileName); */
 		return new ResponseEntity<String>("deleted", HttpStatus.OK);
 	}
 }

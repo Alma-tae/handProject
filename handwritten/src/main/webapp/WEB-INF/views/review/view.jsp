@@ -35,7 +35,7 @@ function comments(){
 		}
 	});
 }
-function listComments2(){
+/* function listComments2(){
 	$.ajax({
 		type:"get",
 		contentType:"application/json",
@@ -58,7 +58,7 @@ function listComments2(){
 			$("#listComments").html(output);
 		}
 	});
-}
+} */
 function changeDate(date){
 	date = new Date(parseInt(date));
 	year = date.getFullYear();
@@ -79,17 +79,17 @@ function listComments(num){
 		}
 	});
 }
-function showModify(cno){
+/* function showModify(cno){
 	$.ajax({
 		type:"get",
-		url:"/peekaboo21/comments/detail/"+rno,
+		url:"/peekaboo21/comments/detail/"+ cno,
 		success:function(result){
-			$("#modifyComments").html(result);
+			$("#modifyComment").html(result);
 			// 태그.css("속성","값")
-			$("#modifyComments").css("visibility","visible");
+			$("#modifyComment").css("visibility","visible");
 		}
 	});
-}
+} */
 </script>
 <style>
 div {
@@ -114,7 +114,7 @@ div {
 <div>
 <input type="hidden" name="rno" value="${dto.rno}">
 <c:if test="${sessionScope.email == dto.writer}">
-	<button type="button" onclick="location.href='/peekaboo21/review/edit/${dto.rno}';">수정/삭제</button>
+	<button type="button" class="btn btn-danger" onclick="location.href='/peekaboo21/review/edit/${dto.rno}';">수정/삭제</button>
 </c:if>
 	<button type="button" id="btnList" class="btn btn-success">목록</button>
 </div>
@@ -123,9 +123,9 @@ div {
 <div style="width:700px; text-aligh:center;">
 <c:if test="${sessionScope.admin_email != null}">
 <textarea rows="5" cols="80" name="commenttext" id="commenttext" placeholder="댓글을 작성하세요"></textarea><br>
-<button type="button" id="btnComments">댓글쓰기</button>
+<button type="button" id="btnComments" class="btn btn-outline-secondary">댓글쓰기</button>
 </c:if>
 </div>
-<div id="listComments"></div>
+<div style="margin:auto;" id="listComments"></div>
 </body>
 </html>

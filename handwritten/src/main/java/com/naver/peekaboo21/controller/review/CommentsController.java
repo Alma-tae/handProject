@@ -49,7 +49,7 @@ public class CommentsController {
 		return entity;
 	}
 	//ResponseBody : 객체 -> json
-	//RequestBody json 형식의 데이터를 객체로 변환
+	//RequestBody : json 형식의 데이터를 객체로 변환
 	@RequestMapping(value="insert_rest.do", method=RequestMethod.POST)
 	public ResponseEntity<String> insert_rest(@RequestBody CommentsDTO dto, HttpSession session){
 		ResponseEntity<String> entity=null;
@@ -69,7 +69,7 @@ public class CommentsController {
 	public ModelAndView comments_detail(@PathVariable("cno") int cno, ModelAndView mav) {
 		CommentsDTO dto = commentsService.detail(cno);
 		//System.out.println("detail:"+dto);
-		mav.setViewName("comments/comments_detail"); //페이지의 이름
+		mav.setViewName("review/comments_detail.part"); //페이지의 이름
 		mav.addObject("dto", dto);
 		return mav;
 	}
@@ -82,7 +82,7 @@ public class CommentsController {
 		int start=pager.getPageBegin(); //레토드 시작 번호
 		int end=pager.getPageEnd();//레코드 끝 번호
 		List<CommentsDTO> list=commentsService.list(rno, start, end, session);
-		mav.setViewName("comments/comments_list");
+		mav.setViewName("review/comments_list.part");
 		mav.addObject("list", list);
 		mav.addObject("pager", pager);
 		return mav;
@@ -94,7 +94,7 @@ public class CommentsController {
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		List<CommentsDTO> list = commentsService.list(rno, start, end, session);
-		mav.setViewName("comments/comments_list");
+		mav.setViewName("review/comments_list.part");
 		mav.addObject("list", list);
 		mav.addObject("pager", pager);
 		return mav;
