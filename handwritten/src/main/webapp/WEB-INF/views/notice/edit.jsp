@@ -38,7 +38,7 @@ $(function(){
 
 	listAttach();
 	
-	$("#uploadedList").on("click", "file_del", function(e){
+	$("#uploadedList").on("click", ".file_del", function(e){
 		var that=$(this);
 		$.ajax({
 			type:"post",

@@ -35,7 +35,7 @@ function comments(){
 		}
 	});
 }
-/* function listComments2(){
+function listComments2(){
 	$.ajax({
 		type:"get",
 		contentType:"application/json",
@@ -58,7 +58,7 @@ function comments(){
 			$("#listComments").html(output);
 		}
 	});
-} */
+} 
 function changeDate(date){
 	date = new Date(parseInt(date));
 	year = date.getFullYear();
@@ -79,7 +79,7 @@ function listComments(num){
 		}
 	});
 }
-/* function showModify(cno){
+function showModify(cno){
 	$.ajax({
 		type:"get",
 		url:"/peekaboo21/comments/detail/"+ cno,
@@ -89,7 +89,8 @@ function listComments(num){
 			$("#modifyComment").css("visibility","visible");
 		}
 	});
-} */
+}
+
 </script>
 <style>
 div {

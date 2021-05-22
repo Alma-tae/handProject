@@ -29,8 +29,8 @@ $(function(){
 			success:function(data){
 				console.log(data);
 				var fileInfo=getFileInfo(data);
-				var html="<a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a><br>";
-				html+="<input type='hidden' name='files' value='"+fileInfo.fullName+"'>";
+				var html = "<a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a><br>";
+				html += "<input type='hidden' name='files' value='"+fileInfo.fullName+"'>";
 				$("#uploadedList").append(html);
 			}
 		});
@@ -38,7 +38,7 @@ $(function(){
 	//첨부파일 목록
 	listAttach();
 	//첨부파일 삭제
-	$("#uploadedList").on("click", "file_del", function(e){
+	$("#uploadedList").on("click", ".file_del", function(e){
 		var that=$(this);
 		$.ajax({
 			type:"post",

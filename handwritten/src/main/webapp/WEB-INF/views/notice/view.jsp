@@ -18,20 +18,6 @@
 		
 		listAttach();
 		
-		$("#uploadedList").on("click", "file_del", function(e){
-			var that=$(this);
-			$.ajax({
-				type:"post",
-				url:"/peekaboo21/upload/deleteFile",
-				data:{fileName:$(this).attr("data-src")},
-				dataType:"text",
-				success:function(result){
-					if(result == "deleted"){
-						that.parent("div").remove();
-					}
-				}
-			});
-		});
 	});
 	
 	function listAttach(){
@@ -42,7 +28,6 @@
 				$(list).each(function(){
 					var fileInfo=getFileInfo(this);
 					var html = "<div><a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a>&nbsp;&nbsp;";
-					/* html += "<a href='#' class='file_del' data-src='"+this+"'>[삭제]</a></div>"; */
 					$("#uploadedList").append(html);
 				});
 			}
