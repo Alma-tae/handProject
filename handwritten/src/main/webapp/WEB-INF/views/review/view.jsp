@@ -8,11 +8,11 @@
 <%@ include file="/WEB-INF/views/include/factor.jsp"%>
 <script>
 $(function(){
-	$("#btnEdit").click(function(){
+/* 	$("#btnEdit").click(function(){
 		location.href="/peekaboo21/review/edit.do";
-	});
+	}); */
 	$("#btnList").click(function(){
-		console.log("list");
+		//console.log("list");
 		location.href="/peekaboo21/review/list.do";
 	});
 	
@@ -82,15 +82,14 @@ function listComments(num){
 function showModify(cno){
 	$.ajax({
 		type:"get",
-		url:"/peekaboo21/comments/detail/"+ cno,
+		url:"/peekaboo21/comments/detail/"+cno,
 		success:function(result){
-			$("#modifyComment").html(result);
+			$("#modifyComments").html(result);
 			// 태그.css("속성","값")
-			$("#modifyComment").css("visibility","visible");
+			$("#modifyComments").css("visibility","visible");
 		}
 	});
 }
-
 </script>
 <style>
 div {
@@ -128,5 +127,6 @@ div {
 </c:if>
 </div>
 <div style="margin:auto;" id="listComments"></div>
+<div id="modifyComments">댓글 수정 화면</div>
 </body>
 </html>

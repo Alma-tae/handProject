@@ -8,20 +8,20 @@
 <%@ include file="/WEB-INF/views/include/factor.jsp"%>
 <script>
 $(function(){
-	$("#btnCommentDelete").click(function(){
+	$("#btnCommentsDelete").click(function(){
 		$.ajax({
 			type:"delete",
 			url:"/peekaboo21/comments/delete/${dto.cno}",
 			success:function(result){
 				if(result=="success"){
 					alert("삭제되었습니다.");
-					$("#modifyComment").css("visibility","hidden");
-					listComment_rest("1");
+					$("#modifyComments").css("visibility","hidden");
+					listComments2("1");
 				}
 			}
 		});
 	});
-	$("#btnCommentUpdate").click(function(){
+	$("#btnCommentsUpdate").click(function(){
 		var commenttext=$("#detail_commenttext").val();
 		$.ajax({
 			type:"put",
@@ -31,14 +31,14 @@ $(function(){
 			dataType:"text",
 			success:function(result){
 				if(result=="success"){
-					$("#modifyComment").css("visibility","hidden");
-					listComment_rest("1");
+					$("#modifyComments").css("visibility","hidden");
+					listComments2("1");
 				}
 			}
 		});
 	});
-	$("#btnCommentClose").click(function(){
-		$("#modifyComment").css("visibility", "hidden");
+	$("#btnCommentsClose").click(function(){
+		$("#modifyComments").css("visibility", "hidden");
 	});	
 });
 </script>
@@ -46,12 +46,12 @@ $(function(){
 <body>
 ${dto.cno}<br>
 <textarea id="detail_commenttext" rows="3" cols="40">${dto.commenttext}</textarea>
-<div style="text-align:center;"> <!-- sessionScope.admin_email != null -->
-<c:if test="${sessionScope.eamil == dto.commenter}">
-	<button id="btnCommentUpdate" type="button">수정</button>
-	<button id="btnCommentDelete" type="button">삭제</button>
+<div style="text-align:center;">
+<c:if test="${sessionScope.admin_email != null}">
+	<button id="btnCommentsUpdate" type="button">수정</button>
+	<button id="btnCommentsDelete" type="button">삭제</button>
 </c:if>
-	<button id="btnCommentClose" type="button">닫기</button>
+	<button id="btnCommentsClose" type="button">닫기</button>
 </div>
 </body>
 </html>
