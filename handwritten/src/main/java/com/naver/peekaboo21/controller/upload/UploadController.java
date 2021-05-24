@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller //Controller bean으로 등록됨
+@Controller
 public class UploadController {
 
 	@Resource(name="uploadPath") //servlet-context.xml에 정의한 bean

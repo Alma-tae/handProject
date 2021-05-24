@@ -13,7 +13,7 @@ import com.naver.peekaboo21.model.notice.dto.NoticeDTO;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
-	
+
 	@Inject
 	NoticeDAO noticeDao;
 
@@ -45,11 +45,12 @@ public class NoticeServiceImpl implements NoticeService {
 		dto.setContent(content);
 		dto.setTitle(title);
 		dto.setWriter(writer);
-		noticeDao.create(dto); //레코드 저장
-		String[] files=dto.getFiles(); //첨부파일 리스트
-		if(files==null) return; //첨부파일이 없으면 종료
-		for(String name : files) {
-			noticeDao.addAttach(name); //첨부파일 목록 저장
+		noticeDao.create(dto); // 레코드 저장
+		String[] files = dto.getFiles(); // 첨부파일 리스트
+		if (files == null)
+			return; // 첨부파일이 없으면 종료
+		for (String name : files) {
+			noticeDao.addAttach(name); // 첨부파일 목록 저장
 		}
 	}
 
@@ -62,9 +63,10 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void update(NoticeDTO dto) throws Exception {
 		noticeDao.update(dto);
-		String[] files=dto.getFiles();
-		if(files == null) return;
-		for(String name : files) {
+		String[] files = dto.getFiles();
+		if (files == null)
+			return;
+		for (String name : files) {
 			noticeDao.updateAttach(name, dto.getNno());
 		}
 	}
@@ -81,14 +83,14 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public void increaseViewcnt(int nno, HttpSession session) throws Exception {
-		long update_time=0;
-		if(session.getAttribute("update_time_"+nno)!=null) {
-			update_time=(long)session.getAttribute("update_time_"+nno);
+		long update_time = 0;
+		if (session.getAttribute("update_time_" + nno) != null) {
+			update_time = (long) session.getAttribute("update_time_" + nno);
 		}
 		long current_time = System.currentTimeMillis();
-		if(current_time - update_time > 5*1000) {
+		if (current_time - update_time > 5 * 1000) {
 			noticeDao.increaseViewcnt(nno);
-			session.setAttribute("update_time+"+nno, current_time);
+			session.setAttribute("update_time+" + nno, current_time);
 		}
 	}
 

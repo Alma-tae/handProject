@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Product Edit</title>
 <script>
-	function product_delete(){
-		if(confirm("삭제하시겠습니까?")){
+	function product_delete() {
+		if (confirm("삭제하시겠습니까?")) {
 			document.form1.action = "/peekaboo21/shop/product/delete.do";
 			document.form1.submit();
 		}
 	}
-	function product_update(){
+	
+	function product_update() {
 		var product_name = document.form1.product_name.value;
 		var price = document.form1.price.value;
 		var description = document.form1.description.value;
@@ -50,8 +51,9 @@ table td {
 </style>
 </head>
 <body>
-<h2>Update products details</h2>
-	<form id="form1" name="form1" method="post" enctype="multipart/form-data">
+	<h2>Update products details</h2>
+	<form id="form1" name="form1" method="post"
+		enctype="multipart/form-data">
 		<table border="0">
 			<tr>
 				<td>상품명</td>
@@ -63,18 +65,19 @@ table td {
 			</tr>
 			<tr>
 				<td>상품 설명</td>
-				<td><textarea rows="5" cols="60" class="form-control" name="description"
-						id="description">${dto.description}</textarea></td>
+				<td><textarea rows="5" cols="60" class="form-control"
+						name="description" id="description">${dto.description}</textarea></td>
 			<tr>
 				<td>상품 이미지</td>
-				<td><img src="/peekaboo21/images/${dto.picture_url}" width="300px" height="300px"><br><br>
-				<input type="file" name="file1"></td>
+				<td><img src="/peekaboo21/images/${dto.picture_url}" width="300px" height="300px"><br>
+				<br> <input type="file" name="file1"></td>
 			</tr>
 		</table>
-				<input type="hidden" name="product_id" value="${dto.product_id}">
-				<input type="button" value="수정" class="btn btn-warning" onclick="product_update()"> &ensp;
-				<input type="button" value="삭제" class="btn btn-danger" onclick="product_delete()"> &ensp;
-				<input type="button" value="상품목록" class="btn btn-success" onclick="location.href='/peekaboo21/shop/product/list.do'">
+		<input type="hidden" name="product_id" value="${dto.product_id}">
+		<input type="button" value="수정" class="btn btn-warning" onclick="product_update()"> &ensp; 
+		<input type="button" value="삭제" class="btn btn-danger" onclick="product_delete()"> &ensp; 
+		<input type="button" value="상품목록" class="btn btn-success"
+			onclick="location.href='/peekaboo21/shop/product/list.do'">
 	</form>
 </body>
 </html>

@@ -27,11 +27,11 @@
 <link rel="stylesheet" href="/peekaboo21/include/slide.css" />
 </head>
 <body>
-	
-			<P style="font-size: 150%;">
-				안녕하세요 :)<br>손편지 프로젝트입니다.
-			</P>
-			<%-- <P>  The time on the server is ${serverTime}. </P> --%>
+
+	<P style="font-size: 150%;">
+		안녕하세요 :)<br>손편지 프로젝트입니다.
+	</P>
+	<%-- <P>  The time on the server is ${serverTime}. </P> --%>
 
 	<div class="slide3 slide">
 		<div class="slide-inner">

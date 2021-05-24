@@ -9,7 +9,7 @@ import com.naver.peekaboo21.model.member.dto.MemberDTO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-	
+
 	@Inject
 	AdminDAO adminDao;
 

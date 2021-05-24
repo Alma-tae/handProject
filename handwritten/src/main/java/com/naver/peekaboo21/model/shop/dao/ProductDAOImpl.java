@@ -14,7 +14,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	
+
 	@Override
 	public List<ProductDTO> listProduct() {
 		return sqlSession.selectList("product.list_product");

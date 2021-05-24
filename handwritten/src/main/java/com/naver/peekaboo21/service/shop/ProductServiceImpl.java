@@ -12,9 +12,9 @@ import com.naver.peekaboo21.model.shop.dto.ProductDTO;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-	@Inject 
+	@Inject
 	ProductDAO productDao;
-	
+
 	@Override
 	public List<ProductDTO> listProduct() {
 		return productDao.listProduct();

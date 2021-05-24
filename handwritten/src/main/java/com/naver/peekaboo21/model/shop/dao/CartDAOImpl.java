@@ -13,7 +13,7 @@ import com.naver.peekaboo21.model.shop.dto.CartDTO;
 
 @Repository
 public class CartDAOImpl implements CartDAO {
-	
+
 	@Inject
 	SqlSession sqlSession;
 
@@ -53,7 +53,7 @@ public class CartDAOImpl implements CartDAO {
 
 	@Override
 	public int countCart(String email, int product_id) {
-		Map<String,Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("email", email);
 		map.put("product_id", product_id);
 		return sqlSession.selectOne("cart.countCart", map);

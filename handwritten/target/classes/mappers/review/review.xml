@@ -74,9 +74,11 @@
 	<sql id="search">
 		<choose>
 			<when test="search_option == 'all'">
-				where r.writer=m.email and (name like '%'||#{keyword}||'%'
+				where r.writer=m.email and (name like
+				'%'||#{keyword}||'%'
 				or content like '%'||#{keyword}||'%'
-				or title like '%'||#{keyword}||'%')
+				or title
+				like '%'||#{keyword}||'%')
 			</when>
 			<otherwise>
 				where r.writer=m.email and

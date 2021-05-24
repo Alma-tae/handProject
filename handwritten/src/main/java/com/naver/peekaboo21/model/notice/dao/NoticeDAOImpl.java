@@ -13,7 +13,7 @@ import com.naver.peekaboo21.model.notice.dto.NoticeDTO;
 
 @Repository
 public class NoticeDAOImpl implements NoticeDAO {
-	
+
 	@Inject
 	SqlSession sqlSession;
 

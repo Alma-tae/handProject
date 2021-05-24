@@ -5,41 +5,49 @@
 	<update id="update">
 		update comments set commenttext=#{commenttext} where cno=#{cno}
 	</update>
-	
+
 	<delete id="delete">
 		delete from comments where cno=#{cno}
 	</delete>
-	
-	<select id="detail" resultType="com.naver.peekaboo21.model.review.dto.CommentsDTO">
+
+	<select id="detail"
+		resultType="com.naver.peekaboo21.model.review.dto.CommentsDTO">
 		select * from comments where cno=#{cno}
 	</select>
-	
+
 	<select id="count" resultType="int">
-		select count(*) from comments where rno=#{rno}
+		select count(*) from comments
+		where rno=#{rno}
 	</select>
-	
+
 	<insert id="insertComments">
-		insert into comments (cno, rno, commenttext, commenter) values
-		(comments_seq.nextval, #{rno}, #{commenttext}, #{commenter})
+		insert into comments (cno, rno, commenttext,
+		commenter) values
+		(comments_seq.nextval, #{rno}, #{commenttext},
+		#{commenter})
 	</insert>
 
-	<select id="listComments" resultType="com.naver.peekaboo21.model.review.dto.CommentsDTO">
+	<select id="listComments"
+		resultType="com.naver.peekaboo21.model.review.dto.CommentsDTO">
 		<include refid="paging_header" />
-		select cno, rno, commenttext, commenter, name, c.regdate, c.updatedate, 
+		select cno, rno, commenttext, commenter, name, c.regdate,
+		c.updatedate,
 		(select writer from review where rno=c.rno) writer
-		from comments c, admin a
+		from
+		comments c, admin a
 		where c.commenter = a.email and rno = #{rno}
-		order by cno desc
+		order
+		by cno desc
 		<include refid="paging_footer" />
 	</select>
-	
+
 	<sql id="paging_header">
 		select * from(select rownum as rn, A.*
 		from (
 	</sql>
 	<sql id="paging_footer">
-			) A
+		) A
 		) where rn between #{start} and #{end}
 	</sql>
-	
+
 </mapper>

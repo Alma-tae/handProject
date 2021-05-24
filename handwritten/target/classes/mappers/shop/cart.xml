@@ -13,7 +13,8 @@
 	<update id="update">
 		update cart set amount=#{amount}
 		where
-		email=#{email} and product_id=#{product_id}
+		email=#{email}
+		and product_id=#{product_id}
 	</update>
 	<update id="modify">
 		update cart set amount=#{amount} where
@@ -45,10 +46,12 @@
 	<select id="cart_money"
 		resultType="com.naver.peekaboo21.model.shop.dto.CartDTO">
 		select product_name, sum(price*amount) money
-		from cart c, product p
+		from cart c,
+		product p
 		where c.product_id=p.product_id
 		group by product_name
-		order by product_name
+		order by
+		product_name
 	</select>
 
 </mapper>

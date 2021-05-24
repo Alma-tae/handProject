@@ -20,5 +20,5 @@ public class NoticeDTO {
 	private int cnt;
 	private String show;
 	private String[] files;
-		
+
 }

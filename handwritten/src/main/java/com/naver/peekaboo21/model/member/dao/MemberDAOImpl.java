@@ -12,7 +12,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	
+
 	@Override
 	public String loginCheck(MemberDTO dto) {
 		return sqlSession.selectOne("member.login_check", dto);

@@ -14,7 +14,7 @@ import com.naver.peekaboo21.model.review.dto.ReviewDTO;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
-	
+
 	@Inject
 	ReviewDAO reviewDao;
 
@@ -36,11 +36,12 @@ public class ReviewServiceImpl implements ReviewService {
 		dto.setContent(content);
 		dto.setTitle(title);
 		dto.setWriter(writer);
-		reviewDao.create(dto); 
-		
+		reviewDao.create(dto);
+
 		String[] files = dto.getFiles();
-		if(files == null) return; //첨부파일이 없으면 종료
-		for(String name : files) {
+		if (files == null)
+			return; // 첨부파일이 없으면 종료
+		for (String name : files) {
 			reviewDao.addImages(name);
 		}
 	}
@@ -54,10 +55,11 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void update(ReviewDTO dto) throws Exception {
 		reviewDao.update(dto);
-		
+
 		String[] files = dto.getFiles();
-		if(files == null) return; //첨부파일이 없으면 종료
-		for(String name : files) {
+		if (files == null)
+			return; // 첨부파일이 없으면 종료
+		for (String name : files) {
 			reviewDao.updateImages(name, dto.getRno());
 		}
 	}
@@ -74,14 +76,14 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void increaseViewcnt(int rno, HttpSession session) throws Exception {
-		long update_time=0;
-		if(session.getAttribute("update_time_"+rno)!=null) {
-			update_time=(long)session.getAttribute("update_time_"+rno);
+		long update_time = 0;
+		if (session.getAttribute("update_time_" + rno) != null) {
+			update_time = (long) session.getAttribute("update_time_" + rno);
 		}
-		long current_time=System.currentTimeMillis();
-		if(current_time - update_time > 5*1000) {
+		long current_time = System.currentTimeMillis();
+		if (current_time - update_time > 5 * 1000) {
 			reviewDao.increaseViewcnt(rno);
-			session.setAttribute("update_time_"+rno, current_time);
+			session.setAttribute("update_time_" + rno, current_time);
 		}
 	}
 

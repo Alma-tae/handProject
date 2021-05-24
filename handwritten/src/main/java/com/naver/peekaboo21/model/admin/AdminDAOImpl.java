@@ -12,7 +12,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	
+
 	@Override
 	public String loginCheck(MemberDTO dto) {
 		return sqlSession.selectOne("admin.login_check", dto);

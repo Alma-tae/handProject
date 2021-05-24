@@ -28,25 +28,25 @@ public class MemberController {
 		memberService.insert(dto);
 		return "member/login.page";
 	}
-	
+
 	@RequestMapping("login.do")
 	public String login() {
 		return "member/login.page";
 	}
-	
+
 	@RequestMapping("login_check.do")
 	public ModelAndView login_check(@ModelAttribute MemberDTO dto, HttpSession session) {
 		String name = memberService.loginCheck(dto, session);
 		ModelAndView mav = new ModelAndView();
-		if(name != null) {
+		if (name != null) {
 			mav.setViewName("home.page");
-		}else {
+		} else {
 			mav.setViewName("member/login.page");
 			mav.addObject("message", "error");
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("logout.do")
 	public ModelAndView logout(HttpSession session, ModelAndView mav) {
 		memberService.logout(session);
@@ -54,7 +54,7 @@ public class MemberController {
 		mav.addObject("message", "logout");
 		return mav;
 	}
-	
+
 	@RequestMapping("view.do")
 	public String view() {
 		return "member/view.page";

@@ -28,7 +28,8 @@
 	<!-- 게시물 내용 -->
 	<select id="view"
 		resultType="com.naver.peekaboo21.model.notice.dto.NoticeDTO">
-		select nno, title, content, n.regdate, viewcnt, a.name as name, show
+		select nno, title, content, n.regdate, viewcnt, a.name as
+		name, show
 		from admin a, notice n
 		where n.writer=a.email and nno=#{nno}
 	</select>
@@ -54,7 +55,8 @@
 	<select id="listAll"
 		resultType="com.naver.peekaboo21.model.notice.dto.NoticeDTO">
 		<include refid="paging_header" />
-		select rownum, nno, title, content, n.regdate, viewcnt, a.name as name, show
+		select rownum, nno, title, content, n.regdate, viewcnt, a.name as
+		name, show
 		from notice n, admin a
 		<include refid="search" />
 		order by nno desc, regdate desc
@@ -71,12 +73,13 @@
 	<sql id="search">
 		<choose>
 			<when test="search_option == 'all'">
-				 where 
-				 n.writer = a.email and (content like '%'||#{keyword}||'%'
-				or title like '%'||#{keyword}||'%')
+				where
+				n.writer = a.email and (content like '%'||#{keyword}||'%'
+				or title like
+				'%'||#{keyword}||'%')
 			</when>
 			<otherwise>
-			where n.writer = a.email and
+				where n.writer = a.email and
 				${search_option} like
 				'%'||#{keyword}||'%'
 			</otherwise>

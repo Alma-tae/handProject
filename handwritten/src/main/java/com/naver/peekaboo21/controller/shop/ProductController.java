@@ -77,7 +77,7 @@ public class ProductController {
 			try {
 				ServletContext application = request.getSession().getServletContext();
 				String path = application.getRealPath("/WEB-INF/views/images/");
-				System.out.println(path);
+				//System.out.println(path);
 				new File(path).mkdir(); // 디렉토리 생성
 				// 첨부파일이 저장된 임시 디렉토리에서 배포 디렉토리로 복사
 				dto.getFile1().transferTo(new File(path + filename));

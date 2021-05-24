@@ -13,13 +13,13 @@ import com.naver.peekaboo21.model.review.dto.CommentsDTO;
 
 @Repository
 public class CommentsDAOImpl implements CommentsDAO {
-	
+
 	@Inject
 	SqlSession sqlSession;
 
 	@Override
 	public List<CommentsDTO> list(Integer rno, int start, int end) {
-		Map<String,Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("start", start);
 		map.put("end", end);
 		map.put("rno", rno);

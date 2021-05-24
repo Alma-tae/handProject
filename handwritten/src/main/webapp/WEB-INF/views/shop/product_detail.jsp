@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Product Detail</title>
 <%@ include file="/WEB-INF/views/include/factor.jsp"%>
 <style>
 table {
@@ -29,8 +29,7 @@ table td {
 					<div class="card-body">
 						<h6 class="card-subtitle text-muted">예시 이미지입니다.</h6>
 					</div>
-					<img src="/peekaboo21/images/${dto.picture_url}" width="100%"
-						height="300px">
+					<img src="/peekaboo21/images/${dto.picture_url}" width="100%" height="300px">
 				</div>
 			</td>
 
@@ -48,7 +47,8 @@ table td {
 								<c:forEach begin="1" end="10" var="i">
 									<option value="${i}">${i}</option>
 								</c:forEach>
-							</select>&nbsp;개 &ensp; <input type="submit" class="btn btn-outline-info" value="장바구니에 담기">
+							</select>&nbsp;개 &ensp; <input type="submit" class="btn btn-outline-info"
+								value="장바구니에 담기">
 						</form>
 					</div>
 				</div>

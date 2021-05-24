@@ -12,23 +12,25 @@
 		$("#btnEdit").click(function() {
 			location.href = "/peekaboo21/notice/edit.do";
 		});
+		
 		$("#btnList").click(function() {
 			location.href = "/peekaboo21/notice/list.do";
 		});
-		
+
 		listAttach();
-		
+
 	});
-	
-	function listAttach(){
+
+	function listAttach() {
 		$.ajax({
-			type:"post",
-			url:"/peekaboo21/notice/getAttach/${dto.nno}",
-			success:function(list){
-				$(list).each(function(){
-					var fileInfo=getFileInfo(this);
-					var html = "<div><a href='"+fileInfo.getLink+"'>"+fileInfo.fileName+"</a>&nbsp;&nbsp;";
-					$("#uploadedList").append(html);
+			type : "post",
+			url : "/peekaboo21/notice/getAttach/${dto.nno}",
+			success : function(list) {
+				$(list).each(
+				function() {
+				var fileInfo = getFileInfo(this);
+				var html = "<div><a href='"+fileInfo.getLink+"'>" + fileInfo.fileName + "</a>&nbsp;&nbsp;";
+				$("#uploadedList").append(html);
 				});
 			}
 		});
@@ -52,16 +54,19 @@
 			<p class="lead"></p>
 		</div>
 		<div>
-		첨부파일<br>
-		<div id="uploadedList"></div>
-		</div><br>
+			첨부파일<br>
+			<div id="uploadedList"></div>
+		</div>
+		<br>
 		<div>
 			<c:if test="${sessionScope.admin_email != null}">
-				<button type="button" class="btn btn-danger" onclick="location.href='/peekaboo21/notice/edit/${dto.nno}';">수정/삭제</button>
-			</c:if> &ensp;
+				<button type="button" class="btn btn-danger"
+					onclick="location.href='/peekaboo21/notice/edit/${dto.nno}';">수정/삭제</button>
+			</c:if>
+			&ensp;
 			<button type="button" id="btnList" class="btn btn-success">목록</button>
 		</div>
-		
+
 	</form>
 </body>
 </html>
