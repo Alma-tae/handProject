@@ -31,7 +31,7 @@
 				<c:out value="${map.search_option =='title'?'selected':''}"/>>제목</option>
 		</select> 
 		<input name="keyword" value="${map.keyword}">
-		<input type="submit" class="btn btn-info disabled" value="조회">
+		<input type="submit" class="btn btn-info disabled" value="조회"> &ensp;
 		<c:if test="${sessionScope.admin_email != null}">
 			<button type="button" id="btnWrite" class="btn btn-secondary disabled">글쓰기</button>
 		</c:if>

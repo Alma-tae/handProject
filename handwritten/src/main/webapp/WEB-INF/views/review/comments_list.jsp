@@ -5,7 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="/WEB-INF/views/include/factor.jsp"%>
+<%@ include file="/WEB-INF/views/include/factor.jsp"%>	
+<script>
+
+</script>
 </head>
 <body>
 	<table style="width: 700px;">
@@ -13,15 +16,14 @@
 		pageContext.setAttribute("newLineChar", "\n");
 		%>
 		<c:forEach var="row" items="${list}">
-			<c:set var="str"
-				value="${fn:replace(row.commenttext, '  ','&nbsp;&nbsp;')}" />
+			<c:set var="str" value="${fn:replace(row.commenttext, '  ','&nbsp;&nbsp;')}" />
 			<c:set var="str" value="${fn:replace(str,newLineChar,'<br>')}" />
 			<tr>
-				<td>${row.name}(<fmt:formatDate value="${row.regdate}"
-						pattern="yyyy-MM-dd HH:mm:ss" />)<br> 
-					${str} <c:if test="${sessionScope.admin_email != null}">
-					<input type="button" value="Modify" id="showModify('${row.cno}')">
-					 </c:if> 
+				<td>
+				${row.name}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss" />)<br>
+				${str} <c:if test="${sessionScope.admin_email != null}">
+				<input type="button" value="Modify" onclick="showModify('${row.cno}')">
+					</c:if>
 				</td>
 			</tr>
 		</c:forEach>
@@ -40,6 +42,6 @@
 					<a href="javascript:listComments('${pager.nextPage}')">[다음]</a>&nbsp;
 		</c:if></td>
 		</tr>
-	</table>
+	</table> 
 </body>
 </html>

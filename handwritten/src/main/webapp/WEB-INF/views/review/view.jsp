@@ -8,9 +8,6 @@
 <%@ include file="/WEB-INF/views/include/factor.jsp"%>
 <script>
 $(function(){
-/* 	$("#btnEdit").click(function(){
-		location.href="/peekaboo21/review/edit.do";
-	}); */
 	$("#btnList").click(function(){
 		//console.log("list");
 		location.href="/peekaboo21/review/list.do";
@@ -35,7 +32,7 @@ function comments(){
 		}
 	});
 }
-function listComments2(){
+/* function listComments2(){
 	$.ajax({
 		type:"get",
 		contentType:"application/json",
@@ -58,7 +55,7 @@ function listComments2(){
 			$("#listComments").html(output);
 		}
 	});
-} 
+}  */
 function changeDate(date){
 	date = new Date(parseInt(date));
 	year = date.getFullYear();
@@ -80,6 +77,7 @@ function listComments(num){
 	});
 }
 function showModify(cno){
+	console.log(cno);
 	$.ajax({
 		type:"get",
 		url:"/peekaboo21/comments/detail/"+cno,

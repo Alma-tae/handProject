@@ -16,7 +16,7 @@ $(function(){
 				if(result=="success"){
 					alert("삭제되었습니다.");
 					$("#modifyComments").css("visibility","hidden");
-					listComments2("1");
+					listComments("1");
 				}
 			}
 		});
@@ -32,7 +32,7 @@ $(function(){
 			success:function(result){
 				if(result=="success"){
 					$("#modifyComments").css("visibility","hidden");
-					listComments2("1");
+					listComments("1");
 				}
 			}
 		});
@@ -50,8 +50,8 @@ ${dto.cno}<br>
 <c:if test="${sessionScope.admin_email != null}">
 	<button id="btnCommentsUpdate" type="button">수정</button>
 	<button id="btnCommentsDelete" type="button">삭제</button>
-</c:if>
 	<button id="btnCommentsClose" type="button">닫기</button>
+</c:if>
 </div>
 </body>
 </html>

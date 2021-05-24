@@ -68,7 +68,7 @@ public class CommentsController {
 	@RequestMapping(value="/detail/{cno}", method=RequestMethod.GET)
 	public ModelAndView comments_detail(@PathVariable("cno") int cno, ModelAndView mav) {
 		CommentsDTO dto = commentsService.detail(cno);
-		//System.out.println("detail:"+dto);
+		System.out.println("detail:"+dto);
 		mav.setViewName("review/comments_detail.part"); //페이지의 이름
 		mav.addObject("dto", dto);
 		return mav;
