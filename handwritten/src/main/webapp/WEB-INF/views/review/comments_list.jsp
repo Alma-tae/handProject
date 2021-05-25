@@ -11,7 +11,7 @@
 </script>
 </head>
 <body>
-	<table style="width: 700px;">
+	<table style="width: 700px; margin: auto;">
 		<%
 		pageContext.setAttribute("newLineChar", "\n");
 		%>

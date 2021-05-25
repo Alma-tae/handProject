@@ -113,7 +113,7 @@ div {
 			<button type="button" id="btnComments" class="btn btn-outline-secondary">댓글쓰기</button>
 		</c:if>
 	</div>
-	<div style="margin: auto;" id="listComments"></div>
+	<div id="listComments"></div>
 	<div id="modifyComments">댓글 수정 화면</div>
 </body>
 </html>
