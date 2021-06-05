@@ -10,4 +10,6 @@ public interface MemberService {
 	public void logout(HttpSession session);
 
 	public void insert(MemberDTO dto);
+	
+	public int emailCheck(MemberDTO dto) throws Exception;
 }

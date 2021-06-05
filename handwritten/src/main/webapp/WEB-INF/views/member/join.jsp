@@ -8,10 +8,52 @@
 <script>
 	$(function() {
 		$("#btnJoin").click(function() {
+			var email = $("#email").val();
+			var pwd = $("#pwd").val();
+			var name = $("#name").val();
+			var emailCheck = $("#emailCheck").val();
+			if (email == "") {
+				alert("이메일을 입력하세요");
+				$("#email").focus();
+				return;
+			}
+			if (pwd == "") {
+				alert("비밀번호를 입력하세요");
+				$("#pwd").focus();
+				return;
+			}
+			if (name == ""){
+				alert("이름을 입력하세요");
+				$("#name").focus();
+				return;
+			}
+			if (emailCheck == "N"){
+				alert("중복확인 버튼을 눌러주세요");
+				return false;
+			}else if (emailCheck == "Y"){
+				return;
+			}
 			document.form1.action = "/peekaboo21/member/insert.do";
 			document.form1.submit();
 		});
 	});
+	
+	function emailCheck(){
+		$.ajax({
+			url : "/peekaboo21/member/email_check.do",
+			type : "post",
+			dataType : "json",
+			data : {"email" : $("#email").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 이메일입니다.");
+				}else if(data == 0){
+					$("#emailCheck").attr("value", "Y");
+					alert("사용 가능한 이메일입니다.");
+				}
+			}
+		});
+	}
 </script>
 </head>
 <body>
@@ -22,6 +64,7 @@
 				<label for="exampleInputEmail1">Email address</label>
 				<input type="email" class="form-control" name="email"
 					aria-describedby="emailHelp" placeholder="Enter email">
+				<button class="emailCheck" type="button" id="emailCheck" onclick="emailCheck()" value="N">중복확인</button>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label>

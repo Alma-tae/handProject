@@ -23,4 +23,10 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.insert("member.insert", dto);
 	}
 
+	@Override
+	public int emailCheck(MemberDTO dto) throws Exception {
+		int result = sqlSession.selectOne("member.email_check", dto);
+		return result;
+	}
+
 }

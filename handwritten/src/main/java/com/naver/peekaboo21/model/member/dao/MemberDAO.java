@@ -6,4 +6,6 @@ public interface MemberDAO {
 	public String loginCheck(MemberDTO dto);
 
 	public void insert(MemberDTO dto);
+	
+	public int emailCheck(MemberDTO dto) throws Exception;
 }

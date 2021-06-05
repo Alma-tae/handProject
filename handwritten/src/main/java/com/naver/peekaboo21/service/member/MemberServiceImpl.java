@@ -33,4 +33,10 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.insert(dto);
 	}
 
+	@Override
+	public int emailCheck(MemberDTO dto) throws Exception {
+		int result = memberDao.emailCheck(dto);
+		return result;
+	}
+
 }

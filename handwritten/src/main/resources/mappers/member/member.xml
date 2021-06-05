@@ -9,4 +9,8 @@
 		insert into member (email, name, pwd) values
 		(#{email}, #{name}, #{pwd})
 	</insert>
+	<select id="email_check" resultType="int">
+		select count(*) from member
+		where email=#{email}
+	</select>
 </mapper>

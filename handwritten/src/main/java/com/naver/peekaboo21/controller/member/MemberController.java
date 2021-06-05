@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.naver.peekaboo21.model.member.dto.MemberDTO;
@@ -19,14 +20,31 @@ public class MemberController {
 	MemberService memberService;
 
 	@RequestMapping("join.do")
-	public String address() {
+	public String join() {
 		return "member/join.page";
+	}
+
+	@ResponseBody
+	@RequestMapping("email_check.do")
+	public String emailCheck(MemberDTO dto) throws Exception {
+		int result = memberService.emailCheck(dto);
+		try {
+			if (result == 1) {
+				return "member/join.page";
+			} else if (result == 0) {
+				memberService.insert(dto);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+		return "redirect:/";
 	}
 
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute MemberDTO dto) {
 		memberService.insert(dto);
 		return "member/login.page";
+
 	}
 
 	@RequestMapping("login.do")
