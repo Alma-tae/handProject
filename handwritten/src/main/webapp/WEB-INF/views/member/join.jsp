@@ -36,15 +36,20 @@
 			document.form1.action = "/peekaboo21/member/insert.do";
 			document.form1.submit();
 		});
+		
+		$("#btnCheck").click(function(){
+			
+		});
 	});
 	
-	function emailCheck(){
+	function fn_emailCheck(){
 		$.ajax({
-			url : "/peekaboo21/member/email_check.do",
+			url : "/peekaboo21/member/emailCheck.do",
 			type : "post",
 			dataType : "json",
 			data : {"email" : $("#email").val()},
 			success : function(data){
+				console.log("1=중복o / 0=중복x : "+ data);
 				if(data == 1){
 					alert("중복된 이메일입니다.");
 				}else if(data == 0){
@@ -63,8 +68,8 @@
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label>
 				<input type="email" class="form-control" name="email"
-					aria-describedby="emailHelp" placeholder="Enter email">
-				<button class="emailCheck" type="button" id="emailCheck" onclick="emailCheck()" value="N">중복확인</button>
+					aria-describedby="emailHelp" placeholder="Enter email"><br>
+				<button class="emailCheck" type="button" id="emailCheck" onclick="fn_emailCheck()" value="N">중복확인</button>
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label>

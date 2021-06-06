@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,26 +26,26 @@ public class MemberController {
 	}
 
 	@ResponseBody
-	@RequestMapping("email_check.do")
-	public String emailCheck(MemberDTO dto) throws Exception {
+	@RequestMapping("emailCheck.do")
+	public int emailCheck(MemberDTO dto) throws Exception {
+		int result = memberService.emailCheck(dto);
+		return result;
+	}
+
+	
+	@RequestMapping("insert.do")
+	public String insert(@ModelAttribute MemberDTO dto) throws Exception {
 		int result = memberService.emailCheck(dto);
 		try {
 			if (result == 1) {
-				return "member/join.page";
-			} else if (result == 0) {
+				return "member/insert.do";
+			}else if (result == 0) {
 				memberService.insert(dto);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException();
 		}
-		return "redirect:/";
-	}
-
-	@RequestMapping("insert.do")
-	public String insert(@ModelAttribute MemberDTO dto) {
-		memberService.insert(dto);
 		return "member/login.page";
-
 	}
 
 	@RequestMapping("login.do")
