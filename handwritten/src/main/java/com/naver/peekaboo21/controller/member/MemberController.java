@@ -26,25 +26,16 @@ public class MemberController {
 	}
 
 	@ResponseBody
-	@RequestMapping("emailCheck.do")
-	public int emailCheck(MemberDTO dto) throws Exception {
+	@RequestMapping("emailCheck")
+	public int emailCheck(MemberDTO dto) {
 		int result = memberService.emailCheck(dto);
 		return result;
 	}
 
-	
 	@RequestMapping("insert.do")
-	public String insert(@ModelAttribute MemberDTO dto) throws Exception {
-		int result = memberService.emailCheck(dto);
-		try {
-			if (result == 1) {
-				return "member/insert.do";
-			}else if (result == 0) {
-				memberService.insert(dto);
-			}
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
+	public String insert(@ModelAttribute MemberDTO dto) {
+		System.out.println("dto::"+dto);
+		memberService.insert(dto);
 		return "member/login.page";
 	}
 

@@ -11,5 +11,5 @@ public interface MemberService {
 
 	public void insert(MemberDTO dto);
 	
-	public int emailCheck(MemberDTO dto) throws Exception;
+	public int emailCheck(MemberDTO dto);
 }
