@@ -31,10 +31,9 @@
 				alert("중복확인 버튼을 눌러주세요");
 				return false;
 			} else if (emailCheck == "Y") {
-				return;
+				document.form1.action = "/peekaboo21/member/insert.do";
+				document.form1.submit();
 			}
-			document.form1.action = "/peekaboo21/member/insert.do";
-			document.form1.submit();
 		});
 	});
 
