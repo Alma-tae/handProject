@@ -35,10 +35,10 @@
 
 	<div class="slide3 slide">
 		<div class="slide-inner">
-			<img src="/peekaboo21/images/one.jpg" class="slide-img"> <img
-				src="/peekaboo21/images/two.jpg" class="slide-img"> <img
-				src="/peekaboo21/images/three.jpg" class="slide-img"> <img
-				src="/peekaboo21/images/four.jpg" class="slide-img">
+			<img src="/peekaboo21/images/one.jpg" alt="calligraphy1" title="calligraphy1" class="slide-img">
+			<img src="/peekaboo21/images/two.jpg" alt="calligraphy2" title="calligraphy2" class="slide-img"> 
+			<img src="/peekaboo21/images/three.jpg" alt="calligraphy3" title="calligraphy3" class="slide-img"> 
+			<img src="/peekaboo21/images/four.jpg" alt="calligraphy4" title="calligraphy4" class="slide-img">
 		</div>
 	</div>
 </body>

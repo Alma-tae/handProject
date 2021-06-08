@@ -64,20 +64,19 @@
 	<form id="form1" name="form1" method="post">
 		<fieldset>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label> <input
-					type="email" class="form-control" name="email" id="email"
-					aria-describedby="emailHelp" placeholder="Enter email"><br>
-				<button class="emailCheck" type="button" id="emailCheck"
+				<label for="exampleInputEmail1">Email address</label>
+				<input type="email" name="email" id="email"
+					aria-describedby="emailHelp" placeholder="Enter email" style="width:300px"> &ensp;
+				<button class="btn btn-primary" type="button" id="emailCheck"
 					onclick="fn_emailCheck();" value="N">중복확인</button>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Password</label> <input
-					type="password" class="form-control" name="pwd"
-					placeholder="Password">
+				<label for="exampleInputPassword1">Password</label>
+				<input type="password" name="pwd" placeholder="Password" style="width:300px">
 			</div>
 			<div class="form-group">
-				<label class="col-form-label" for="inputDefault">Name</label> <input
-					type="text" class="form-control" placeholder="input" name="name">
+				<label class="col-form-label" for="inputDefault">Name</label>
+				<input type="text" placeholder="input" name="name" style="width:300px">
 				<small id="emailHelp" class="form-text text-muted">사이트에서
 					사용하실 닉네임을 적어주세요.</small>
 			</div>

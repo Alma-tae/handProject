@@ -33,13 +33,13 @@
 			<h2>A.Login</h2>
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label>
-				<input type="email" class="form-control" id="email" name="email"
-					aria-describedby="emailHelp" placeholder="Enter email">
+				<input type="email" id="email" name="email"
+					aria-describedby="emailHelp" placeholder="Enter email" style="width:300px">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label>
-				<input type="password" class="form-control" id="pwd" name="pwd"
-					placeholder="Password">
+				<input type="password" id="pwd" name="pwd"
+					placeholder="Password" style="width:300px">
 				<small id="emailHelp" class="form-text text-muted">You'll never share your
 					password with anyone else.</small>
 			</div>
