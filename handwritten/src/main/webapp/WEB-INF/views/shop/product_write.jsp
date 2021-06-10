@@ -45,8 +45,7 @@ table td {
 </head>
 <body>
 	<h2>Product upload</h2>
-	<form id="form1" name="form1" method="post"
-		enctype="multipart/form-data">
+	<form id="form1" name="form1" method="post" enctype="multipart/form-data">
 		<table border="0">
 			<tr>
 				<td>상품명</td>

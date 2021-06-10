@@ -30,8 +30,8 @@
 				<c:out value="${map.search_option =='content'?'selected':''}"/>>내용</option>
 			<option value="title"
 				<c:out value="${map.search_option =='title'?'selected':''}"/>>제목</option>
-		</select> <input name="keyword" value="${map.keyword}"> <input
-			type="submit" class="btn btn-info disabled" value="조회">
+		</select> <input name="keyword" style="width:300px;" value="${map.keyword}"> 
+		<input type="submit" class="btn btn-info disabled" value="조회">
 		&ensp;
 		<c:if test="${sessionScope.admin_email != null}">
 			<button type="button" id="btnWrite"

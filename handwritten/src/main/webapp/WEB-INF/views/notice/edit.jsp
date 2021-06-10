@@ -113,7 +113,7 @@
 		<div>조회수 : ${dto.viewcnt}</div>
 		<div>이름 : ${dto.name}</div>
 		<div>
-			제목 : <input name="title" value="${dto.title}">
+			제목 : <input name="title" style="width:300px;" value="${dto.title}">
 		</div>
 		<div>
 			내용 <textarea rows="3" cols="80" name="content" id="content">${dto.content}</textarea>

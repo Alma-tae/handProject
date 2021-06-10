@@ -40,7 +40,7 @@
 		<div>조회수 : ${dto.viewcnt}</div>
 		<div>이름 : ${dto.name}</div>
 		<div>
-			제목 : <input name="title" value="${dto.title}">
+			제목 : <input name="title" style="width:300px;" value="${dto.title}">
 		</div>
 		<br>
 		<div>

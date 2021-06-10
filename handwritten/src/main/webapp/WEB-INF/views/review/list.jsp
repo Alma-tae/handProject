@@ -33,7 +33,7 @@
 			<option value="title"
 				<c:out value="${map.search_option =='title'?'selected':''}"/>>제목</option>
 		</select>
-		 <input name="keyword" value="${map.keyword}"> 
+		 <input name="keyword" style="width:300px;" value="${map.keyword}"> 
 		 <input type="submit" class="btn btn-danger disabled" value="조회">
 		&ensp;
 		<c:choose>

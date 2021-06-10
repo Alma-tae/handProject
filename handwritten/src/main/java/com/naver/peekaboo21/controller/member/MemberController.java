@@ -34,7 +34,7 @@ public class MemberController {
 
 	@RequestMapping("insert.do")
 	public String insert(@ModelAttribute MemberDTO dto) {
-		System.out.println("dto::"+dto);
+		//System.out.println("dto::"+dto);
 		memberService.insert(dto);
 		return "member/login.page";
 	}
