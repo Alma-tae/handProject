@@ -38,16 +38,18 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="collapse navbar-collapse" id="navbarColor03">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="/peekaboo21">Home<span class="sr-only"></span></a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/peekaboo21/shop/product/list.do">Product</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/peekaboo21/notice/list.do">Notice</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/peekaboo21/review/list.do">Review</a></li>
-				<li class="nav-item"><a class="nav-link"
-					href="/peekaboo21/shop/cart/list.do">Cart</a></li>
+				<li class="nav-item active">
+				<a class="nav-link" href="/peekaboo21">Home<span class="sr-only"></span></a></li>
+				<li class="nav-item">
+				<a class="nav-link" href="/peekaboo21/shop/product/list.do">Product</a></li>
+				<li class="nav-item">
+				<a class="nav-link" href="/peekaboo21/notice/list.do">Notice</a></li>
+				<li class="nav-item">
+				<a class="nav-link" href="/peekaboo21/review/list.do">Review</a></li>
+				<li class="nav-item">
+				<a class="nav-link" href="/peekaboo21/shop/cart/list.do">Cart</a></li>
+				<li class="nav-item">
+				<a class="nav-link" href="/peekaboo21/post/list.do">Post office</a></li>
 			</ul>
 		</div>
 		<div class="form-row float-right">
