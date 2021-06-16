@@ -16,15 +16,15 @@
 			$('.dataOption a:not(:eq(' + idx + '))').addClass('btn-empty');
 
 			if (idx == 0) {
-				pharmacy_list();
+				postOffice_list(1);
 			} else {
 				animal_list();
 			}
 		}
 	});
 
-	pharmacy_list(1);
-	function pharmacy_list(page) {
+	postOffice_list(1);
+	function postOffice_list(page) {
 		$.ajax({
 				url : 'post/postOffice',
 				data : {
@@ -50,6 +50,30 @@
 						alert(text + " : " + req.status)
 					}
 				});
+	}
+	
+	function makePage( totalList, curPage ) {
+		var page = pageInfo(totalList, curPage, pageList, blockPage);
+		var tag = '';
+
+		if ( page.curBlock > 1 ) {
+			tag += "<a class='page_first' data-page=1>처음</a>"
+				+ "<a class='page_prev'data-page=" + (page.beginPage - blockPage) + ">이전</a>";
+		}
+		
+		for(var no=page.beginPage; no <= page.endPage; no++ ) {
+			if( no==curPage ) {
+				tag += "<span class='page_on'>" + no + "</span>";
+			} else {
+				tag += "<a class='page_off' data-page=" + no + ">" + no + "</a>";
+			}
+		}
+
+		if (page.curBlock < page.totalBlock) {
+			tag += "<a class='page_next' data-page=" + (page.endPage + 1) + ">다음</a>"
+				+ "<a class='page_last' data-page=" + page.totalPage + ">마지막</a>";
+		}
+		$('.page-list').html(tag);
 	}
 
 	function animal_list() {
